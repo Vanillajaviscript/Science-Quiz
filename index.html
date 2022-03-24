@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Science Quiz!</title>
+    <title>Quiz!</title>
     <script
   src="https://code.jquery.com/jquery-3.6.0.js"
   integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
@@ -15,11 +15,22 @@
 <body>
         <div>
             <div>
-                <h2 id="question">Question: </h2>
-                <h4 id="category">Category: </span></h4>
-                <h4 id="type">Type: </h4>
+                <h1 id="category">Category: </span></h1>
+                <h2 id="type">Type: </h2>
+                <h2 id="difficulty">Difficulty: </h2>
+                <h1 id="question">Question: </h1>
             </div>
+        <form>
+            <label for="choice1" id="choice-1">A: </label>
+            <input type="radio" id="answer-a">
+            <label for="choice2" id="choice-2">B: </label>
+            <input type="radio" id="answer-b">
+            <label for="choice3" id="choice-3">C: </label>
+            <input type="radio" id="answer-c">
+            <lable for="choice4" id="choice-4">D: </lablel>
+            <input type="radio" id="answer-d">
+        </form>
+        <input type="submit" value="submit">
         </div>
-    
 </body>
 </html>
