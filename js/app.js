@@ -4,8 +4,8 @@ const $category = $('#category');
 const $type = $('#type');
 const $difficulty = $('#difficulty');
 const $submit = $('button');
-
-const $input = $('input[name="choice"]');
+const $resetButton = $(':reset')
+// const $input = $('input[name="choice"]');
 
 const getQuiz = () => {
     let data = $.ajax(url);
@@ -38,17 +38,16 @@ getQuiz().then(data => {
 
     for (let i = 0; i < 4; i++) {
         let index = i + 1;
-        // let $choiceLabel = $(`#choice${index}label`)
-        // $choiceLabel.html(possibleAnswers[i]);
-        // let $choiceVal = $(`#choice${index}`)
-        // $choiceVal.val(possibleAnswers[i]);
+        
+        // $(`#choice${index}`).val(possibleAnswers[i]);
+     
+        // $(`#choice${index}label`).html(possibleAnswers[i]);
     document.getElementById(`choice${index}label`).innerHTML = possibleAnswers[i];
     document.getElementById(`answer${index}`).value = possibleAnswers[i];
     }
 
-    $submit.on('click', () => {
-    //    document.querySelector('button').addEventListener('click', () => {
-        // e.preventDefault();
+    $submit.on('click', (e) => {
+        e.preventDefault();
         let correctAnswer = data.results[0].correct_answer;
         document.querySelectorAll('input[name="choice"]').forEach((el) => {
             if(el.checked) {
@@ -60,6 +59,5 @@ getQuiz().then(data => {
             } 
         })
     })
-
 })
 
