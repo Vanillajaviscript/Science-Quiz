@@ -4,7 +4,8 @@ const $category = $('#category');
 const $type = $('#type');
 const $difficulty = $('#difficulty');
 const $submit = $('button');
-// const $input = $('input[name="choice"]');
+
+const $input = $('input[name="choice"]');
 
 const getQuiz = () => {
     let data = $.ajax(url);
@@ -37,18 +38,26 @@ getQuiz().then(data => {
 
     for (let i = 0; i < 4; i++) {
         let index = i + 1;
-        const $choice = $(`#choice${index}label`)
-        $choice.html(possibleAnswers[i]);
-        $choice.val(possibleAnswers[i]);
+        // let $choiceLabel = $(`#choice${index}label`)
+        // $choiceLabel.html(possibleAnswers[i]);
+        // let $choiceVal = $(`#choice${index}`)
+        // $choiceVal.val(possibleAnswers[i]);
+    document.getElementById(`choice${index}label`).innerHTML = possibleAnswers[i];
+    document.getElementById(`answer${index}`).value = possibleAnswers[i];
     }
 
-    $submit.on('click', (e) => {
-        e.preventDefault();
+    $submit.on('click', () => {
+    //    document.querySelector('button').addEventListener('click', () => {
+        // e.preventDefault();
         let correctAnswer = data.results[0].correct_answer;
-        let incorrectAnswers = data.results[0].incorrect_answers;
         document.querySelectorAll('input[name="choice"]').forEach((el) => {
             if(el.checked) {
-            }
+                if(el.value === correctAnswer) {
+                    alert('Correct!')
+                } else {
+                    alert('Wrong answer, try again!')
+                }
+            } 
         })
     })
 
