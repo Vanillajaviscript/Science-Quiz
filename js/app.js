@@ -51,9 +51,9 @@ getQuiz().then(data => {
     $submit.on('click', (e) => {
         e.preventDefault();
         let correctAnswer = data.results[0].correct_answer;
-        document.querySelectorAll('input[name="answer"]').forEach((el) => {
-            if(el.checked) {
-                if(el.value === correctAnswer) {
+        document.querySelectorAll('input[name="answer"]').forEach((e) => {
+            if(e.checked) {
+                if(e.value === correctAnswer) {
                     alert('Correct!')
                     location.reload();
                 } else {
