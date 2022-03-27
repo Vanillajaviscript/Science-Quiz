@@ -1,17 +1,88 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+
 html {
-    background-image: url(https://media.newyorker.com/photos/599340ce12dfbd15203fb09b/4:3/w_2286,h_1714,c_limit/Voyager-Record-Test-2.jpg)
+    background-image: url(https://i.pinimg.com/originals/f7/3f/79/f73f791645be04de0c85c128dbe392bf.gif);
+    font-family: 'Orbitron', sans-serif;
 }
 
-h1, h2{
+#answer1, #answer2, #answer3, #answer4 {
+    cursor: pointer;
+    margin: 10px;
+}
+
+#answer1label, #answer2label, #answer3label, #answer4label {
+    bottom: 16px;
+    position:relative;
+} 
+
+button:hover, input:hover {
+    cursor: pointer;
+    background:linear-gradient(to top, rgba(233, 207, 210, 0), rgba(249, 246, 246, 0.938));
+    color: black;
+  }
+
+input[type='radio'] { 
+    transform: scale(2);
+}
+
+body {
+    background: linear-gradient(to top, rgba(240, 231, 231, 0), rgba(155, 4, 4, 0.77));
+    padding: 50px;
+    margin: auto 0;
+  }
+  
+button, input {
+    background: rgba(128, 128, 128, 0.558);
+    border-radius: 40px;
     color: white;
-    text-align: center;
-}
+    border: none;
+    margin-top: 20px;
+    margin-right: 10px;
+    padding: 20px;
+    -webkit-border-radius: 5px;
+  }
 
+h1 {
+    color: rgba(131, 173, 246, 0.667);
+    text-align: center;
+    font-weight: bolder;
+}
+h2 {
+    text-align: left;
+    font-style: italic;
+    padding: 20px;
+    color:rgba(231, 239, 245, 0.736)
+}
 .container {
     color: white;
 }
 
 .main {
-    background-color: rgba(4, 4, 53, 0.247);
+    background: linear-gradient(to top, rgba(240, 231, 231, 0), rgba(10, 2, 2, 0.932));
+    border-radius: 40px;
+    margin: 80px;
 }
+
+@media only screen and (max-width: 600px) {
+    input[type='radio'] { 
+        display: block;
+    }
+    #answer1label, #answer2label, #answer3label, #answer4label {
+        padding: 30px;
+    } 
+    body {
+        background-image: url(https://i.pinimg.com/originals/f7/3f/79/f73f791645be04de0c85c128dbe392bf.gif);
+        background-size: cover;
+    }
+    h1, h2 {
+        color: rgba(255, 255, 255, 0.61);
+    }
+    
+    button:hover, input:hover {
+        cursor: pointer;
+        background:linear-gradient(to top, rgba(223, 216, 217, 0.763), rgba(244, 8, 8, 0.77));
+      }
+
+  }
 

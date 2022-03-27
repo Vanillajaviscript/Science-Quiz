@@ -1,22 +1,7 @@
-//Declare variables to the DOM;
-//Declare arrow function and within pull API data using AJAX
-//Call function and declare variables pulling necessary data from API
-//Apply the pulled data from API and turn into array
-//Create a function to randomize possible answers
-
-const url = "https://opentdb.com/api.php?amount=10&category=17&type=multiple"
-const $question = $('#question');
-const $category = $('#category');
-const $type = $('#type');
-const $difficulty = $('#difficulty');
-const $submit = $('button');
-const $reset = $(':reset')
-
 const getQuiz = () => {
-    let data = $.ajax(url);
+    let data = $.ajax("https://opentdb.com/api.php?amount=10&category=17&type=multiple");
     return data;
 }
-
 function randomizeAnswers (array) {
     for (let i = array.length - 1; i >= 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -25,41 +10,43 @@ function randomizeAnswers (array) {
     } 
 
 getQuiz().then(data => {
+    // Gathers correct and incorrect answers into an array
     const possibleAnswers = [...data.results[0].incorrect_answers, data.results[0].correct_answer];
-
-    randomizeAnswers(possibleAnswers);
-
-    for (let i = 0; i < 4; i++) {
-        let index = i + 1;
-        $(`#answer${index}`).val(possibleAnswers[i]);
-        $(`#answer${index}label`).html(possibleAnswers[i]);
+    // Calling the function to randomize answers
+        randomizeAnswers(possibleAnswers);
+    // Loops through possibleAnswers to connect to radio buttons
+    for (let i = 0; i < possibleAnswers.length; i++) {
+        let indexOf = i + 1;
+        $(`#answer${indexOf}`).val(possibleAnswers[i]);
+        $(`#answer${indexOf}label`).html(possibleAnswers[i]);
     }
-    //API data to pull 
+    // Gathers necessary data from API and inserts its content as the last child of each element
     let question = data.results[0].question;
-        $question.append(question);
+        $('#question').append(question);
     let category = data.results[0].category;
-        $category.append(category);
+        $('#category').append(category);
     let type = data.results[0].type + " choice";
-        $type.append(type);
+        $('#type').append(type);
     let difficulty = data.results[0].difficulty;
-        $difficulty.append(difficulty);
-
-    $reset.on('click', () => {
+        $('#difficulty').append(difficulty);
+    // Creates a reset button to skip questions
+    $(':reset').on('click', () => {
         location.reload();
     })
-
-    $submit.on('click', (e) => {
+    // Main submit button that allows the user to keep guessing until the question is answered correctly, which then resets the page
+    $('button').on('click', (e) => {
         e.preventDefault();
-        let correctAnswer = data.results[0].correct_answer;
-        document.querySelectorAll('input[name="answer"]').forEach((e) => {
-            if(e.checked) {
-                if(e.value === correctAnswer) {
-                    alert('Correct!')
-                    location.reload();
+        const $radioValue = $("input[name='answer']:checked");
+        if ($radioValue.length === 0) {
+            alert('You need to select an answer')
+        } else {
+            let correctAnswer = data.results[0].correct_answer;
+                if ($radioValue.val() === correctAnswer) {
+                    alert('correct')
+                    location.reload()
                 } else {
-                    alert('Wrong answer, try again!')
+                    alert ('Wrong answer, try again!')
                 }
-            } 
-        })
+            }
     })
 })
