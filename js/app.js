@@ -42,7 +42,7 @@ getQuiz().then(data => {
         } else {
             let correctAnswer = data.results[0].correct_answer;
                 if ($radioValue.val() === correctAnswer) {
-                    alert('correct')
+                    alert('correct!')
                     location.reload()
                 } else {
                     alert ('Wrong answer, try again!')
