@@ -13,7 +13,7 @@ The README.mdintroduces your project to prospective employers and forms their fi
 
 # SCIENCE QUIZ APPLICATION
 ### A simple application that exemplifies the use of libraries, styling, and basic html structure.
-#Purpose:
+# Purpose:
 - Display 10 science questions in a multiple choice format.
 - Allow user to choose an answer, if chosen wrong, the user can either continue to guess or click the reset button for a different question.
 - However, if the user chooses correctly, the page automatically reloads with a different question to answer.
